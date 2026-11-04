@@ -1,4 +1,8 @@
-const BASE = "http://localhost:5001/api";
+const BASE = import.meta.env.VITE_API_URL as string;
+
+if (!BASE) {
+  throw new Error("Missing VITE_API_URL. Set it in frontend/.env");
+}
 
 export type AskExtra = Record<string, unknown>;
 
